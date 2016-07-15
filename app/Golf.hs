@@ -5,5 +5,10 @@ every n xs
                         (y:ys) -> y : every n ys
                         []     -> []
 
+buildList :: [a] -> [[a]] -> [[a]]
+buildList xs xsList 
+   | (length xsList) < (length xs) = buildList xs ((every (length xsList) xs) : xsList)                 
+   | otherwise                = xsList
+
 skips :: [a] -> [[a]]
-skips xs = [(every 1 xs)] ++ [(every 2 xs)]
+skips xs = buildList xs [[]]
