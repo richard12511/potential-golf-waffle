@@ -22,5 +22,8 @@ localMaxima (x1:x2:x3:xs)
    | otherwise          = localMaxima (x2:x3:xs)
 localMaxima xs = []
 
+elements :: [Integer] -> [Integer]
+elements xs = [num | num <- [1..9], num `elem` xs]
+
 counts :: [Integer] -> [(Integer, Integer)]
 counts [] = []
