@@ -8,7 +8,7 @@ every n xs
 buildList :: [a] -> [[a]] -> [[a]]
 buildList xs xsList 
    | (length xsList) < (length xs) = buildList xs (xsList ++ [(every (length xsList) xs)])                 
-   | otherwise                = xsList
+   | otherwise                = drop 1 xsList
 
 skips :: [a] -> [[a]]
 skips xs = buildList xs [[]]
