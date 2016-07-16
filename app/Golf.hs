@@ -10,3 +10,15 @@ buildList xs xsList
 
 skips :: [a] -> [[a]]
 skips xs = buildList xs []
+
+hasMaxima :: Integer -> Integer -> Integer -> Bool
+hasMaxima x1 x2 x3 
+   | (x2 > x1) && (x2 > x3) = True
+   | otherwise              = False
+
+localMaxima :: [Integer] -> [Integer]
+localMaxima (x1:x2:x3:xs)
+   | hasMaxima x1 x2 x3 = x2 : (localMaxima (x2:x3:xs))
+   | otherwise          = localMaxima (x2:x3:xs)
+localMaxima xs = []
+
