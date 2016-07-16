@@ -1,9 +1,7 @@
 every :: Int -> [a] -> [a]
-every n xs
-   | n > (length xs) = []
-   | otherwise       = case drop (n-1) xs of 
-                        (y:ys) -> y : every n ys
-                        []     -> []
+every n xs = case drop (n-1) xs of 
+      (y:ys) -> y : every n ys
+      []     -> []
 
 buildList :: [a] -> [[a]] -> [[a]]
 buildList xs xsList 
