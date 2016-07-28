@@ -8,3 +8,14 @@ perimeter (a, b, c) = a + b + c
 
 allRightTrianglesSmallerThan11 = [(a, b, c) | c <- [1..10], b <- [1..c], a <- [1..b], isRight (a,b,c)]
 allRightTrianglesSmallerThan11AndPerimeter24 = [(a, b, c) | (a, b, c) <- allRightTrianglesSmallerThan11, perimeter (a,b,c) == 24]
+
+surfaceArea r h =
+   let sideArea = 2 * pi * r * h
+       topArea  = pi * r^2
+   in sideArea + 2 * topArea 
+
+elem' :: (Eq a) => a -> [a] -> Bool
+elem' a [] = False
+elem' a (x:xs) 
+   | a == x    = True
+   | otherwise = elem' a xs
