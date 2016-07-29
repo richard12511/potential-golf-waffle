@@ -19,3 +19,10 @@ elem' a [] = False
 elem' a (x:xs) 
    | a == x    = True
    | otherwise = elem' a xs
+
+quicksort :: (Ord a) => [a] -> [a]
+quicksort [] = []
+quicksort (x:xs) =
+   let smallerElems = [a | a <- xs, a <= x]
+       largerElems  = [a | a <- xs, a > x]
+   in quicksort smallerElems ++ [x] ++ quicksort largerElems
