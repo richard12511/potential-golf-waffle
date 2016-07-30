@@ -26,3 +26,10 @@ quicksort (x:xs) =
    let smallerElems = [a | a <- xs, a <= x]
        largerElems  = [a | a <- xs, a > x]
    in quicksort smallerElems ++ [x] ++ quicksort largerElems
+
+quicksort' :: (Ord a) => [a] -> [a]
+quicksort' [] = []
+quicksort' (x:xs) = 
+  let smallerElems = quicksort (filter (<= x) xs)
+      largerElems  = quicksort (filter (> x) xs)
+  in smallerElems ++ [x] ++ largerElems
