@@ -8,4 +8,4 @@ countsOf x (y:ys)
 
 counts :: [Integer] -> [(Integer, Integer)]
 counts [] = []
-counts xs = map (\a -> (a, (countsOf a xs))) xs
+counts xs = nub $ map (\a -> (a, (countsOf a xs))) xs
