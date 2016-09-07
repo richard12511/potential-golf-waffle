@@ -22,6 +22,6 @@ countToString (num, count) =
 toHistoStrings :: [Int] -> [String]
 toHistoStrings xs = map countToString $ counts xs
 
---histogram :: [Int] -> String
---histogram [] = ""
---histogram (x:xs) = countToString x ++ "\n" ++ histogram xs
+histogram :: [Int] -> String
+histogram [] = ""
+histogram xs = intercalate "\n" (toHistoStrings xs)
