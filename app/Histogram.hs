@@ -15,6 +15,8 @@ numToStars :: Int -> String
 numToStars 0 = ""
 numToStars x = ' ' : '*' : (numToStars $ x - 1)
 
+--numToStars needs to use spaces instead of stars until the largest count is done
+--ex:["* * = 1","* * * = 2"] should be [" * * = 1","* * * = 2"], notice the extra space
 countToString :: (Int, Int) -> String
 countToString (num, count) =
   intToDigit num : ' ' : '=' : numToStars count
