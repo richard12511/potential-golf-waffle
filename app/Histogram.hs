@@ -18,3 +18,10 @@ numToStars x = ' ' : '*' : (numToStars $ x - 1)
 countToString :: (Int, Int) -> String
 countToString (num, count) =
   intToDigit num : ' ' : '=' : numToStars count
+
+toHistoStrings :: [Int] -> [String]
+toHistoStrings xs = map countToString $ counts xs
+
+--histogram :: [Int] -> String
+--histogram [] = ""
+--histogram (x:xs) = countToString x ++ "\n" ++ histogram xs
