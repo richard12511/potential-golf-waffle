@@ -15,6 +15,10 @@ addSpaces :: Int -> String
 addSpaces 0 = []
 addSpaces x = ' ' : addSpaces (x - 1)
 
+addStars :: Int -> String
+addStars 0 = []
+addStars x = ' ' : '*' : addStars (x - 1)
+
 numToStars :: Int -> String
 numToStars 0 = ""
 numToStars x
