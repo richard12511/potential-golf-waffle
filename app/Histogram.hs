@@ -11,9 +11,15 @@ counts :: [Int] -> [(Int, Int)]
 counts [] = []
 counts xs = nub $ map (\a -> (a, (countsOf a xs))) xs
 
+addSpaces :: Int -> String
+addSpaces 0 = []
+addSpaces x = ' ' : addSpaces (x - 1)
+
 numToStars :: Int -> String
 numToStars 0 = ""
-numToStars x = ' ' : '*' : (numToStars $ x - 1)
+numToStars x
+  | x < 9 = ' ' : '*' : (numToStars $ x - 1)
+  | otherwise = addSpaces (9 - x) ++ (numToStars $ x - 1)
 
 --numToStars needs to use spaces instead of stars until the largest count is done
 --ex:["* * = 1","* * * = 2"] should be [" * * = 1","* * * = 2"], notice the extra space
