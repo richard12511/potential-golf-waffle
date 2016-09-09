@@ -13,7 +13,7 @@ counts xs = nub $ map (\a -> (a, (countsOf a xs))) xs
 
 addSpaces :: Int -> String
 addSpaces 0 = []
-addSpaces x = ' ' : addSpaces (x - 1)
+addSpaces x = ' ' : ' ' : addSpaces (x - 1)
 
 addStars :: Int -> String
 addStars 0 = []
@@ -21,12 +21,8 @@ addStars x = ' ' : '*' : addStars (x - 1)
 
 numToStars :: Int -> String
 numToStars 0 = ""
-numToStars x
-  | x < 9 = ' ' : '*' : (numToStars $ x - 1)
-  | otherwise = addSpaces (9 - x) ++ (numToStars $ x - 1)
+numToStars x = addSpaces (9 - x) ++ addStars (x)
 
---numToStars needs to use spaces instead of stars until the largest count is done
---ex:["* * = 1","* * * = 2"] should be [" * * = 1","* * * = 2"], notice the extra space
 countToString :: (Int, Int) -> String
 countToString (num, count) =
   intToDigit num : ' ' : '=' : numToStars count
