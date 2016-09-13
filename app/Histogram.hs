@@ -16,7 +16,6 @@ addChars _ 0 = []
 addChars char x = ' ' : char : addChars char (x - 1)
 
 numToStars :: Int -> String
-numToStars 0 = ""
 numToStars x = addChars '*' (x) ++ addChars ' ' (9 - x)
 
 countToString :: (Int, Int) -> String
