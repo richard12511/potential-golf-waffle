@@ -23,8 +23,8 @@ countToString (num, count) =
   intToDigit num : ' ' : '=' : numToStars count
 
 toHistoStrings :: [Int] -> [String]
-toHistoStrings xs = map reverse $ map countToString $ counts xs
+toHistoStrings xs = transpose $ map reverse $ map countToString $ counts xs
 
 histogram :: [Int] -> String
 histogram [] = ""
-histogram xs = intercalate "\n" $ map reverse (toHistoStrings xs)
+histogram xs = intercalate "\n" $ (toHistoStrings xs)
