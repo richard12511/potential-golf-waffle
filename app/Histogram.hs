@@ -22,8 +22,13 @@ countToString :: (Int, Int) -> String
 countToString (num, count) =
   intToDigit num : ' ' : '=' : numToStars count
 
+interlaceSpaces :: String -> String
+interlaceSpaces [] = []
+interlaceSpaces (x:xs) = ' ' : x : interlaceSpaces xs
+
 toHistoStrings :: [Int] -> [String]
-toHistoStrings xs = transpose $ map reverse $ map countToString $ counts xs
+toHistoStrings xs =
+  map interlaceSpaces $ transpose $ map reverse $ map countToString $ counts xs
 
 histogram :: [Int] -> String
 histogram [] = ""
